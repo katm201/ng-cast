@@ -1,11 +1,11 @@
 <div class="video-player">
   <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="{{'https://www.youtube.com/embed/' + $ctrl.video.id.videoId + '?autoplay=0'}}" allowFullScreen></iframe>
+    <iframe class="embed-responsive-item" src="{{'https://www.youtube.com/embed/' + $ctrl.video.id.videoId + '?autoplay=' + $ctrl.autoplay}}" allowFullScreen></iframe>
   </div>
   <div class="toggle">
     <h4>Toggle Autoplay</h4>
     <label class="switch">
-      <input type="checkbox" name="autoplay">
+      <input type="checkbox" name="autoplay" ng-click="$ctrl.toggleAutoplay()">
       <span class="slider"></span>
     </label>
     
