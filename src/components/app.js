@@ -5,9 +5,8 @@ angular.module('video-player')
     this.currentVideo = window.exampleVideoData[0];
     this.videos = window.exampleVideoData;
     this.handleSelection = video => {
-      console.log('registered click');
       this.currentVideo = video;
     };
   },
-  templateUrl: '/src/templates/app.html'
+  templateUrl: 'src/templates/app.html'
 });
