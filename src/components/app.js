@@ -2,15 +2,17 @@ angular.module('video-player')
 .component('app', {
   controller: function(youTube) {
     this.$onInit = function () {
-      youTube.search('', this.handleSearch); 
+      youTube.search('', this.searchResults); 
     };
+
     this.currentVideo = {};
     this.videos = [];
+    youTube.search('', this.searchResults);
     this.selectVideo = video => {
       this.currentVideo = video;
     };
     this.appSearch = youTube.search;
-    this.handleSearch = data => {
+    this.searchResults = data => {
       this.videos = data.items;
       this.currentVideo = data.items[0];
     };
