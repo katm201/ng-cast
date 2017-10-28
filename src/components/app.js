@@ -6,7 +6,11 @@ angular.module('video-player')
     this.selectVideo = video => {
       this.currentVideo = video;
     };
-    this.search = youTube.search;
+    this.appSearch = youTube.search;
+    this.handleSearch = data => {
+      this.videos = data.items;
+      this.currentVideo = data.items[0];
+    };
   },
   templateUrl: 'src/templates/app.html'
 });
