@@ -1,11 +1,17 @@
 angular.module('video-player')
-.component('search', {
-  controller: function() {
-    this.searchInput = '';
-  },
-  bindings: {
-    onClick: '<',
-    handleSearch: '<'
-  },
-  templateUrl: 'src/templates/search.html'
-});
+  .controller('SearchController', function() {
+    this.handleClick = () => {
+      this.service.search(this.input, (data) => {
+        this.result(data);
+      });
+    };
+  })
+  .component('search', {
+    bindings: {
+      service: '<',
+      result: '<'
+    },
+    controller: 'SearchController',
+    templateUrl: 'src/templates/search.html'
+  });
+

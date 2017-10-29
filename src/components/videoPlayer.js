@@ -1,14 +1,14 @@
 angular.module('video-player')
 
-.component('videoPlayer', {
-  bindings: {
-    video: '<'
-  },
-  controller: function() {
-    this.autoplay = 0;
-    this.toggleAutoplay = function() {
-      this.autoplay ? this.autoplay = 0 : this.autoplay = 1;
+  .controller('VideoPlayerController', function() {
+    this.videoUrl = () => {
+      return this.video ? `https://www.youtube.com/embed/${this.video.id.videoId}` : '';
     };
-  },
-  templateUrl: 'src/templates/videoPlayer.html'
-});
+  })
+  .component('videoPlayer', {
+    bindings: {
+      video: '<'
+    },
+    controller: 'VideoPlayerController',
+    templateUrl: 'src/templates/videoPlayer.html'
+  });

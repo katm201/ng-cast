@@ -1,23 +1,26 @@
 angular.module('video-player')
-.service('youTube', function($http) {
-  this.search = function(query, callback) {
-    $http({
-      url: 'https://www.googleapis.com/youtube/v3/search',
-      method: 'GET',
-      params: {
-        key: window.YOUTUBE_API_KEY,
-        q: query,
-        type: 'video',
-        part: 'snippet',
-        maxResults: 5
-      }
-    })
-    .then(function successCallback (data) { 
-      console.log('success! ', data);
-      callback(data.data); 
-    }, 
-    function errorCallback(error) {
-      console.log('error! ', error);
-    });
-  };
-});
+
+  .service('youTube', function($http, $window) {
+    this.search = function(query, callback) {
+      $http.get('https://www.googleapis.com/youtube/v3/search', {
+        params: {
+          part: 'snippet',
+          q: query,
+          type: 'video',
+          maxResults: 5,
+          key: $window.YOUTUBE_API_KEY,
+          videoEmbeddable: 'true'
+        }
+      })
+        .then(function({data}) {
+          if (callback) {
+            callback(data.items);
+          }
+        })
+        .catch(function({data}) {
+          data.error.errors.forEach(function(err) {
+            console.error(err.message);
+          });
+        });
+    };
+  });
