@@ -1,6 +1,6 @@
 <div class="search-bar form-inline">
-  <input class="form-control" type="text" value="{{$ctrl.term}}"/>
-  <button class="btn">
+  <input class="form-control" type="text" ng-model="$ctrl.term" ng-change="$ctrl.searchVideos($ctrl.term)"/>
+  <button class="btn" ng-click="$ctrl.handleSubmit()">
     <span class="glyphicon glyphicon-search"></span>
   </button>
 </div>
