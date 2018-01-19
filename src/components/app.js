@@ -1,5 +1,5 @@
 angular.module('video-player')
-
-.component('app', {
-  // TODO
-});
+  .component('app', {
+    // note: templateUrl is from the index.html, not the component
+    templateUrl: './src/templates/app.html',
+  });
