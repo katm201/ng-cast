@@ -12,5 +12,6 @@ angular.module('video-player')
         this.videos = data;
         this.selectVideo(data[0]);
       });
+      this.searchVideos('kittens');
     }
   });
